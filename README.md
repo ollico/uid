@@ -1,4 +1,4 @@
-# Uid Helper
+# UID Helper
 
 A handy little Laravel compatible package that creates unique identifiers like `u5CVsCnxyXg` for your Eloquent models.
 
