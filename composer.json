@@ -5,7 +5,8 @@
   "require": {
     "php": "^7.1",
     "hashids/hashids": "3.0",
-    "laravel/framework": ">=5.5"
+    "illuminate/database": ">=5.5",
+    "illuminate/container": ">=5.5"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.0"
