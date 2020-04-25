@@ -8,12 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 class UidServiceProvider extends ServiceProvider
 {
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
             __DIR__ . '/../config/uid.php' => config_path('uid.php'),
@@ -32,5 +27,12 @@ class UidServiceProvider extends ServiceProvider
         Blueprint::macro('dropUid', function(?string $columnName = null): void {
             $this->dropColumn($columnName ?: Config::get('uid.column_name'));
         });
+    }
+
+    public function register(): void
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/uid.php', 'uid'
+        );
     }
 }
