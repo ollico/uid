@@ -7,22 +7,13 @@ A handy little Laravel compatible package that creates unique identifiers like `
 Require this package
 
 ```
-composer require wearealgomas/uid
+composer require ollico/uid
 ```
 
 ## Usage
 
 ### Configuration
 
-Create a new entry in `database.config.php` to configure your uid's:
-```
-    'uid' => [
-        'salt' => '', // Default ''
-        'minLength' => '', // Default 0
-        'alphabet' => '', // Default 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
-    ],
-```
-You can remove the `salt`, `minLength` or `alphabet` to use default values.
 
 ### Database
 

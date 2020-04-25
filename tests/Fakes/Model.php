@@ -2,8 +2,8 @@
 
 namespace Tests\Fakes;
 
-use WeAreAlgomas\Uid\Traits\HasUid;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
+use Ollico\Uid\Traits\HasUid;
 
 class Model extends EloquentModel
 {

@@ -1,9 +1,8 @@
 <?php
 
-namespace WeAreAlgomas\Uid\Test;
+namespace Ollico\Uid\Test;
 
 use PHPUnit\Framework\TestCase;
-use Tests\Fakes\Model;
 
 class HasUidTest extends TestCase
 {

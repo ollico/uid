@@ -1,9 +1,9 @@
 <?php
 
-namespace WeAreAlgomas\Uid\Traits;
+namespace Ollico\Uid\Traits;
 
-use Illuminate\Database\Eloquent\Model;
 use Hashids\Hashids;
+use Illuminate\Database\Eloquent\Model;
 
 trait HasUid
 {
