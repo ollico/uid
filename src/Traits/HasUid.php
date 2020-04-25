@@ -4,13 +4,15 @@ namespace Ollico\Uid\Traits;
 
 use Hashids\Hashids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 
 trait HasUid
 {
     /**
      * Generate and fill the Uid when the model is being created.
+     * @return void
      */
-    public static function bootHasUid()
+    public static function bootHasUid(): void
     {
         static::creating(function (Model $model) {
             if (!$model->uid) {
@@ -24,11 +26,11 @@ trait HasUid
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param string $uid
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return void
      */
-    public function scopeUid($query, $uid)
+    public function scopeUid($query, $uid): void
     {
-        return $query->where('uid', $uid);
+        $query->where('uid', $uid);
     }
 
     /**
@@ -36,7 +38,7 @@ trait HasUid
      *
      * @return string
      */
-    private static function generateUid()
+    private static function generateUid(): string
     {
         $uid = (new Hashids(self::getSalt(), self::getMinLength(), self::getAlphabet()))
             ->encode(self::getMicrotimeAsInteger());
@@ -53,9 +55,9 @@ trait HasUid
      *
      * @return string
      */
-    private static function getSalt()
+    private static function getSalt(): string
     {
-        return config('database.uid.salt', '');
+        return Config::get('uid.salt', '');
     }
 
     /**
@@ -63,9 +65,9 @@ trait HasUid
      *
      * @return string
      */
-    private static function getMinLength()
+    private static function getMinLength(): int
     {
-        return config('database.uid.minLength', 0);
+        return (int) Config::get('uid.min_length', 0);
     }
 
     /**
@@ -73,9 +75,9 @@ trait HasUid
      *
      * @return string
      */
-    private static function getAlphabet()
+    private static function getAlphabet(): string
     {
-        return config('database.uid.alphabet', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');
+        return Config::get('uid.alphabet', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');
     }
 
     /**
@@ -83,7 +85,7 @@ trait HasUid
      *
      * @return int
      */
-    private static function getMicrotimeAsInteger()
+    private static function getMicrotimeAsInteger(): int
     {
         return (int) (10000*microtime(true));
     }
